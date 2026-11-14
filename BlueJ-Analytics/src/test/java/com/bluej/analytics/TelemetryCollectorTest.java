@@ -21,7 +21,6 @@ class TelemetryCollectorTest {
 
     @Test
     void observerStoresEvents() {
-        // FIX: Corrected typo from TeemetryCollector to TelemetryCollector
         TelemetryCollector c = TelemetryCollector.INSTANCE; 
         c.onEvent(EventFactory.createCompileEvent(3, false, List.of(), 10));
         c.onEvent(EventFactory.createCompileEvent(1, false, List.of(), 10));

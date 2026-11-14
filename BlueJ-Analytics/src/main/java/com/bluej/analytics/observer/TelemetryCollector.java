@@ -5,8 +5,6 @@ import com.bluej.analytics.model.*;
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-/**
- * Central telemetry store. Implemented thread-safe enum singleton so the plugin can be insertedfrom any extension entry-point without duplication; avoids reflection attacks*/
 public enum TelemetryCollector implements TelemetryObserver, TelemetrySubject {
 
     INSTANCE;

@@ -3,6 +3,7 @@ package com.bluej.analytics.report;
 import com.bluej.analytics.model.ClassLifecycleEvent;
 import com.bluej.analytics.model.CompileEvent;
 import com.bluej.analytics.model.ExecutionTelemetryEvent;
+import com.bluej.analytics.model.MethodDefinitionEvent;
 import com.bluej.analytics.model.SessionMetadata;
 import com.bluej.analytics.model.TelemetryEvent;
 import com.bluej.analytics.observer.TelemetryCollector;
@@ -87,11 +88,16 @@ public class PdfReportGenerator implements ReportStrategy {
 
             heading("Editor Activity", 14);
 
-            line("Active time: " +
+            line("Estimated active editing time: " +
                     formatDuration(agg.activeTimeMs()));
 
-            line("Idle time: " +
+            line("Recorded idle time: " +
                     formatDuration(agg.idleTimeMs()));
+
+            line(String.format(
+                    "Average time between edits: %.2f seconds",
+                    agg.averageEditIntervalSeconds()
+            ));
 
             long editEvents = collector.getEvents()
                     .stream()
@@ -141,7 +147,8 @@ public class PdfReportGenerator implements ReportStrategy {
 
             for (TelemetryEvent event : collector.getEvents()) {
                 if (event instanceof ClassLifecycleEvent ||
-                        event instanceof ExecutionTelemetryEvent) {
+                        event instanceof ExecutionTelemetryEvent ||
+                        event instanceof MethodDefinitionEvent) {
                     timeline.add(event);
                 }
             }
@@ -172,6 +179,12 @@ public class PdfReportGenerator implements ReportStrategy {
                     if (classEvent.hasError()) {
                         description += " (error)";
                     }
+
+                } else if (event instanceof MethodDefinitionEvent) {
+                    MethodDefinitionEvent method = (MethodDefinitionEvent) event;
+                    description = "METHOD DEFINITION: " + method.getClassName()
+                            + "." + method.getMethodSignature()
+                            + " - " + method.getAction();
 
                 } else if (event instanceof ExecutionTelemetryEvent) {
 
@@ -289,8 +302,6 @@ public class PdfReportGenerator implements ReportStrategy {
         y -= amount;
     }
 
-    // Draw the compilation error trend without overlapping
-    // the next section of the report.
     private void drawBarChart(List<Integer> values)
             throws IOException {
 
@@ -304,7 +315,6 @@ public class PdfReportGenerator implements ReportStrategy {
             return;
         }
 
-        // Reserve enough space for the entire chart.
         float chartHeight = 220;
         checkSpace(chartHeight);
 
@@ -314,13 +324,10 @@ public class PdfReportGenerator implements ReportStrategy {
         float slotWidth = chartWidth / displayed;
         float barWidth = slotWidth * 0.55f;
 
-        // The zero line is in the middle of the graph.
         float zeroY = y - 105;
 
-        // Maximum height above or below the zero line.
         float maxBarHeight = 75;
 
-        // Draw the horizontal zero line.
         content.setStrokingColor(80, 80, 80);
         content.setLineWidth(1);
 
@@ -328,7 +335,6 @@ public class PdfReportGenerator implements ReportStrategy {
         content.lineTo(RIGHT, zeroY);
         content.stroke();
 
-        // Label the zero line.
         drawChartText("0", LEFT - 12, zeroY - 3, 8);
 
         for (int i = 0; i < displayed; i++) {
@@ -364,10 +370,8 @@ public class PdfReportGenerator implements ReportStrategy {
                 content.fill();
             }
 
-            // Reset text colour.
             content.setNonStrokingColor(0, 0, 0);
 
-            // Display the change in errors above or below each bar.
             float valueY;
 
             if (value >= 0) {
@@ -383,7 +387,6 @@ public class PdfReportGenerator implements ReportStrategy {
                     8
             );
 
-            // Label each compilation interval.
             drawChartText(
                     String.valueOf(i + 1),
                     x + 2,
@@ -408,7 +411,6 @@ public class PdfReportGenerator implements ReportStrategy {
                 9
         );
 
-        // Move below the entire chart before continuing.
         y -= chartHeight;
     }
 

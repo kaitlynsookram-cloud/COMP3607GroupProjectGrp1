@@ -1,4 +1,3 @@
-
 package com.bluej.analytics.model;
 
 public class SessionMetadata {

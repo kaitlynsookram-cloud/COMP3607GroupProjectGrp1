@@ -1,4 +1,3 @@
-
 package com.bluej.analytics;
 
 import bluej.extensions2.BClass;

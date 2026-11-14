@@ -1,4 +1,3 @@
-
 package com.bluej.analytics.model;
 
 public class ExecutionTelemetryEvent implements TelemetryEvent {
@@ -10,6 +9,10 @@ public class ExecutionTelemetryEvent implements TelemetryEvent {
     private final String outcome;
     private final String[] parameters;
 
+    private final boolean runtimeException;
+    private final String exceptionMessage;
+
+    // Original constructor, kept for compatibility
     public ExecutionTelemetryEvent(
             long timestamp,
             String className,
@@ -17,6 +20,21 @@ public class ExecutionTelemetryEvent implements TelemetryEvent {
             String objectName,
             String outcome,
             String[] parameters) {
+
+        this(timestamp, className, methodName, objectName,
+                outcome, parameters, false, null);
+    }
+
+    // Constructor that also stores runtime exception details
+    public ExecutionTelemetryEvent(
+            long timestamp,
+            String className,
+            String methodName,
+            String objectName,
+            String outcome,
+            String[] parameters,
+            boolean runtimeException,
+            String exceptionMessage) {
 
         this.timestamp = timestamp;
         this.className = className;
@@ -26,6 +44,9 @@ public class ExecutionTelemetryEvent implements TelemetryEvent {
         this.parameters = parameters == null
                 ? new String[0]
                 : parameters.clone();
+
+        this.runtimeException = runtimeException;
+        this.exceptionMessage = exceptionMessage;
     }
 
     @Override
@@ -57,5 +78,12 @@ public class ExecutionTelemetryEvent implements TelemetryEvent {
     public String[] getParameters() {
         return parameters.clone();
     }
-}
 
+    public boolean hasRuntimeException() {
+        return runtimeException;
+    }
+
+    public String getExceptionMessage() {
+        return exceptionMessage;
+    }
+}

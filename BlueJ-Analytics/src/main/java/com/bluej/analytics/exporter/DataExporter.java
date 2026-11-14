@@ -4,7 +4,7 @@ import com.bluej.analytics.observer.TelemetryCollector;
 import java.io.IOException;
 
 public abstract class DataExporter {
-    /** Template method */
+    // Template method
     public final void export(TelemetryCollector collector, String filename) throws IOException {
         validate(collector);
         String data = formatData(collector);

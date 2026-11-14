@@ -12,7 +12,7 @@ public class CompileEvent implements TelemetryEvent {
                         List<ErrorRecord> errors, long compileDurationMs) {
         this.timestamp = timestamp;
         this.errorCount = errorCount;
-        this.successful = successful; // Make sure this is spelled correctly!
+        this.successful = successful;
         this.errors = errors;
         this.compileDurationMs = compileDurationMs;
     }

@@ -1,16 +1,15 @@
 package com.bluej.analytics.analysis;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
-
 import com.bluej.analytics.model.CompileEvent;
 import com.bluej.analytics.model.EditorEvent;
 import com.bluej.analytics.model.ErrorRecord;
 import com.bluej.analytics.model.TelemetryEvent;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 public class TelemetryAnalyzer {
 
@@ -20,79 +19,232 @@ public class TelemetryAnalyzer {
         this.events = new ArrayList<>(events);
     }
 
-    /** Total active time = sum of editor keystroke intervals */
+    //to estime active editing time
     public long totalActiveTimeMs() {
-        return events.stream()
-                .filter(e -> e instanceof EditorEvent)
-                .mapToLong(e -> ((EditorEvent) e).getIdleTimeMs() == 0
-                        ? 5000 : 0) // placeholder: keystroke delta
-                .sum();
+
+        List<Long> timestamps = new ArrayList<>();
+
+        for (TelemetryEvent event : events) {
+            if (event instanceof EditorEvent) {
+                timestamps.add(event.getTimestamp());
+            }
+        }
+
+        if (timestamps.isEmpty()) {
+            return 0;
+        }
+
+        timestamps.sort(Long::compareTo);
+
+        //to estimate 1 sec for each recorded edit
+        long activeTime = timestamps.size() * 1000L;
+
+        //for short gaps in editing
+        for (int i = 1; i < timestamps.size(); i++) {
+
+            long gap = timestamps.get(i)
+                    - timestamps.get(i - 1);
+
+            if (gap > 0 && gap <= 5000) {
+                activeTime += gap;
+            }
+        }
+
+        return activeTime;
     }
 
+    //total idle time
     public long totalIdleTimeMs() {
-        return events.stream()
-                .filter(e -> e instanceof EditorEvent)
-                .mapToLong(e -> ((EditorEvent) e).getIdleTimeMs())
-                .sum();
+
+        long total = 0;
+
+        for (TelemetryEvent event : events) {
+
+            if (event instanceof EditorEvent) {
+
+                EditorEvent editorEvent =
+                        (EditorEvent) event;
+
+                total += editorEvent.getIdleTimeMs();
+            }
+        }
+
+        return total;
     }
 
-    /** Time between consecutive compilations, milli. */
+    //avg time between editing
+    public double averageEditIntervalSeconds() {
+
+        List<Long> timestamps = new ArrayList<>();
+
+        for (TelemetryEvent event : events) {
+
+            if (event instanceof EditorEvent) {
+                timestamps.add(event.getTimestamp());
+            }
+        }
+
+        if (timestamps.size() < 2) {
+            return 0;
+        }
+
+        timestamps.sort(Long::compareTo);
+
+        long totalGap = 0;
+
+        for (int i = 1; i < timestamps.size(); i++) {
+
+            long gap = timestamps.get(i)
+                    - timestamps.get(i - 1);
+
+            if (gap > 0) {
+                totalGap += gap;
+            }
+        }
+
+        return totalGap / (1000.0 * (timestamps.size() - 1));
+    }
+
+    //for time between compilation
     public List<Long> timeBetweenCompiles() {
-        List<Long> stamps = events.stream()
+
+        List<Long> timestamps = events.stream()
                 .filter(e -> e instanceof CompileEvent)
                 .map(TelemetryEvent::getTimestamp)
                 .sorted()
                 .collect(Collectors.toList());
-        List<Long> deltas = new ArrayList<>();
-        for (int i = 1; i < stamps.size(); i++) {
-            deltas.add(stamps.get(i) - stamps.get(i - 1));
+
+        List<Long> intervals = new ArrayList<>();
+
+        for (int i = 1; i < timestamps.size(); i++) {
+
+            intervals.add(
+                    timestamps.get(i) -
+                            timestamps.get(i - 1)
+            );
         }
-        return deltas;
+
+        return intervals;
     }
 
-    /** Frequency of each error code. */
+    //how often compilation error occurs
     public Map<String, Integer> errorFrequency() {
-        Map<String, Integer> freq = new TreeMap<>();
-        for (TelemetryEvent e : events) {
-            if (e instanceof CompileEvent) {
-                for (ErrorRecord er : ((CompileEvent) e).getErrors()) {
-                    freq.merge(er.getErrorCode(), 1, Integer::sum);
+
+        Map<String, Integer> frequency =
+                new TreeMap<>();
+
+        for (TelemetryEvent event : events) {
+
+            if (event instanceof CompileEvent) {
+
+                CompileEvent compileEvent =
+                        (CompileEvent) event;
+
+                for (ErrorRecord error :
+                        compileEvent.getErrors()) {
+
+                    String code = error.getErrorCode();
+
+                    frequency.put(
+                            code,
+                            frequency.getOrDefault(code, 0) + 1
+                    );
                 }
             }
         }
-        return freq;
+
+        return frequency;
     }
 
+    //compile success rate
     public double compileSuccessRate() {
-        long total = events.stream().filter(e -> e instanceof CompileEvent).count();
-        if (total == 0) return 0.0;
-        long success = events.stream()
-                .filter(e -> e instanceof CompileEvent && ((CompileEvent) e).isSuccessful())
-                .count();
-        return (double) success / total;
+
+        int total = 0;
+        int successful = 0;
+
+        for (TelemetryEvent event : events) {
+
+            if (event instanceof CompileEvent) {
+
+                total++;
+
+                CompileEvent compileEvent =
+                        (CompileEvent) event;
+
+                if (compileEvent.isSuccessful()) {
+                    successful++;
+                }
+            }
+        }
+
+        if (total == 0) {
+            return 0;
+        }
+
+        return (double) successful / total;
     }
 
+    //compile attempts
     public int totalCompilations() {
-        return (int) events.stream().filter(e -> e instanceof CompileEvent).count();
+
+        int count = 0;
+
+        for (TelemetryEvent event : events) {
+
+            if (event instanceof CompileEvent) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
+    //compiled errors count
     public int totalErrors() {
-        return events.stream()
-                .filter(e -> e instanceof CompileEvent)
-                .mapToInt(e -> ((CompileEvent) e).getErrorCount())
-                .sum();
+
+        int total = 0;
+
+        for (TelemetryEvent event : events) {
+
+            if (event instanceof CompileEvent) {
+
+                CompileEvent compileEvent =
+                        (CompileEvent) event;
+
+                total += compileEvent.getErrorCount();
+            }
+        }
+
+        return total;
     }
 
-    /** Error-difference between successive compiles (for chart of progression). */
+    //changes in error during compilation
     public List<Integer> errorDifferenceSeries() {
-        List<CompileEvent> compiles = events.stream()
+
+        List<CompileEvent> compilations = events.stream()
                 .filter(e -> e instanceof CompileEvent)
                 .map(e -> (CompileEvent) e)
+                .sorted((a, b) ->
+                        Long.compare(
+                                a.getTimestamp(),
+                                b.getTimestamp()
+                        )
+                )
                 .collect(Collectors.toList());
-        List<Integer> series = new ArrayList<>();
-        for (int i = 1; i < compiles.size(); i++) {
-            series.add(compiles.get(i).getErrorCount() - compiles.get(i - 1).getErrorCount());
+
+        List<Integer> differences = new ArrayList<>();
+
+        for (int i = 1; i < compilations.size(); i++) {
+
+            int previous =
+                    compilations.get(i - 1).getErrorCount();
+
+            int current =
+                    compilations.get(i).getErrorCount();
+
+            differences.add(current - previous);
         }
-        return series;
+
+        return differences;
     }
 }

@@ -21,7 +21,7 @@ public class EditorActivityTracker implements DocumentListener {
                              String newText, int oldLength,
                              int newLength) {
 
-        // Ignore notifications where no characters changed.
+        //to ignore notifs if no changes; was causing a lot of duplicating
         if (oldLength == 0 && newLength == 0) {
             return;
         }
