@@ -16,6 +16,8 @@ import com.bluej.analytics.model.TelemetryEvent;
 /**
  * Test the telemetry event model classes to verify 
  * they correctly store event details and return the expected values
+ * 
+ * Made by: Kaitlyn Sookram
  */
 
 public class EventModelsTest {

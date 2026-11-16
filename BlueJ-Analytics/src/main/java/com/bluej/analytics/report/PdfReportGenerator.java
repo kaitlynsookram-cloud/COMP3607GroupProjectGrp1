@@ -25,6 +25,7 @@ import com.bluej.analytics.observer.TelemetryCollector;
  * The summary has session information, compilation stats,
  * editor activity, error frequency and class and method activity timelines
  *
+ * Made by: Anthony Lakicharan
  */
 
 public class PdfReportGenerator implements ReportStrategy {

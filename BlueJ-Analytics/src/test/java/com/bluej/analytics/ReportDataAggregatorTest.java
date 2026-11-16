@@ -1,14 +1,20 @@
 package com.bluej.analytics;
 
-import com.bluej.analytics.model.*;
-import com.bluej.analytics.report.ReportDataAggregator;
-import org.junit.jupiter.api.Test;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+
+import com.bluej.analytics.model.CompileEvent;
+import com.bluej.analytics.model.ErrorRecord;
+import com.bluej.analytics.model.TelemetryEvent;
+import com.bluej.analytics.report.ReportDataAggregator;
 /**
  * Test that ReportDataAggregator properly calculates compilation success
  * rates, aggregates compilation error frequency and determines intervals between 
  * compilation.
+ * 
+ * Made by: Kaitlyn Sookram
  */
 
 class ReportDataAggregatorTest {

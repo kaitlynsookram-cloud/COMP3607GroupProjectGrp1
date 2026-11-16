@@ -14,6 +14,8 @@ import com.bluej.analytics.model.TelemetryEvent;
 /**
  * Analyzes collected telemetry events to calculate editing time ,idle time
  * compilation statistics and errors.
+ * 
+ * Made by: Anthony Lakicharan
  */
 
 public class TelemetryAnalyzer {

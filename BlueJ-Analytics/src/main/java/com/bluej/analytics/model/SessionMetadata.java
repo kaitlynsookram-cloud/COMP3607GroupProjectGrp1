@@ -2,6 +2,8 @@ package com.bluej.analytics.model;
 /**
  * Holds telemtry session metadata;
  * student ID, session duration and timestamps
+ * 
+ * Made by:Kaitlyn Sookram
  */
 
 
@@ -31,8 +33,8 @@ public class SessionMetadata {
         return sessionEndMs;
     }
     /**
-     * Sets session end time in millieseconds and sums the total duration time
-     * 
+     * Sets session end time in millieseconds and sums 
+     * the total duration time
      */
 
     public void setSessionEndMs(long v) {

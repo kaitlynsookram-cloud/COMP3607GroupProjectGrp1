@@ -6,6 +6,8 @@ import com.bluej.analytics.observer.TelemetryCollector;
 /**
  * Abstract base for exporting telemetry data
  * Standard export method using the Template Method
+ * 
+ * Made by: Anthony Lakicharan
  */
 
 public abstract class DataExporter {

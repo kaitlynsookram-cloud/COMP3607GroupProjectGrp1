@@ -36,6 +36,8 @@ import bluej.extensions2.event.PackageEvent;
  * Entry point for BlueJ Analytics Extension
  * Listens for BlueJ events then collects,tracks and stores telemetry data
  * Makes JSON and PDF reports from the collected telemetry data
+ * 
+ * Made by: Anthony Lakicharan
  */
 
 public class BlueJAnalyticsExtension extends Extension

@@ -16,6 +16,8 @@ import com.bluej.analytics.tracking.EditorActivityTracker;
  * Tests EditorActivityTracker to verify it correctly records
  * editing activity;character changes, idle time and timestamps as
  * telemetry events
+ * 
+ * Made by: Kaitlyn Sookram
  */
 
 public class EditorActivityTrackerTest {

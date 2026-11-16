@@ -10,7 +10,10 @@ import com.bluej.analytics.model.ExecutionTelemetryEvent;
 /**
 * Create telemetry events and then assigns
 * a timestamp when events are created
+*
+*Made by: Anthony Lakicharan
 */
+
 
 public class EventFactory {
         /**

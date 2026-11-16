@@ -11,6 +11,8 @@ import com.google.gson.GsonBuilder;
 /**
  * Exports telemetry data into formatted JSON file
  * Uses Gson to serialize collector metadata 
+ * 
+ * Made by: Anthony Lakicharan
  */
 
 public class JsonExporter extends DataExporter {

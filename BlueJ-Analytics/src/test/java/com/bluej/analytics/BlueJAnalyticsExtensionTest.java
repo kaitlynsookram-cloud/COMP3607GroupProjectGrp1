@@ -1,24 +1,30 @@
 package com.bluej.analytics;
 
-import bluej.extensions2.event.CompileEvent;
-
-import com.bluej.analytics.model.TelemetryEvent;
-import com.bluej.analytics.observer.TelemetryCollector;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.bluej.analytics.model.TelemetryEvent;
+import com.bluej.analytics.observer.TelemetryCollector;
+
+import bluej.extensions2.event.CompileEvent;
 /**
  * Tests the BlueJ Analytics extension handles compilation events correctly,
  * records telemetry data , manages editor tracking and verfies that session reports
  * are exported upon extention termination.
+ * 
+ * Made by: Kaitlyn Sookram
  */
 
 public class BlueJAnalyticsExtensionTest {

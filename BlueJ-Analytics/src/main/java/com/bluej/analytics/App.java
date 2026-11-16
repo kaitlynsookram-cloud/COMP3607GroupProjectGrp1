@@ -10,7 +10,8 @@ import com.bluej.analytics.report.PdfReportGenerator;
 /**
  * Creates sample events, exports data and generates a PDF report 
  * to demonstrate the telemetry analytics system
- * App
+ * 
+ * Made by: Anthony Lakicharan
  */
 
 

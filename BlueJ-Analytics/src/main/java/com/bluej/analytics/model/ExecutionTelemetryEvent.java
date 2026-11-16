@@ -1,8 +1,10 @@
 package com.bluej.analytics.model;
 /**
- * a program execution event,noting the class, method
+ * A program execution event,noting the class, method
  * object, outcome and parameters.This event also stores the runtime exception
  * details when necessary  
+ * 
+ * Made by:Anthony Lakicharan
  */
 
 

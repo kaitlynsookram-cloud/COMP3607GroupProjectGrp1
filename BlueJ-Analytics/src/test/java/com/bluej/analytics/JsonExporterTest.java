@@ -1,24 +1,28 @@
 package com.bluej.analytics;
 
-import com.bluej.analytics.exporter.JsonExporter;
-import com.bluej.analytics.observer.TelemetryCollector;
-import com.bluej.analytics.model.CompileEvent;
-import com.bluej.analytics.model.SessionMetadata;
-
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.AfterEach;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+
+import com.bluej.analytics.exporter.JsonExporter;
+import com.bluej.analytics.model.CompileEvent;
+import com.bluej.analytics.model.SessionMetadata;
+import com.bluej.analytics.observer.TelemetryCollector;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 /**
  * Test that JsonExporter correctly exports
  * telemetry events and session metadata into JSON files 
+ * 
+ * Made by: Kaitlyn Sookram
  */
 
 

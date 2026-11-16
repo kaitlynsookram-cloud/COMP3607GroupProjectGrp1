@@ -13,6 +13,8 @@ import com.bluej.analytics.observer.TelemetryCollector;
  * Tests TelemetryCollector to verify it maintains a single
  * instance, stores telemetry events and notifies registered observers
  * when new events are recorded.
+ * 
+ * Made by:Kaydance Hamilton
  */ 
 
 class TelemetryCollectorTest {
