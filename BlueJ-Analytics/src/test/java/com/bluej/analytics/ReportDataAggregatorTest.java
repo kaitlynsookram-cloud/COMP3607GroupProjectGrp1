@@ -5,6 +5,11 @@ import com.bluej.analytics.report.ReportDataAggregator;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
+/**
+ * Test that ReportDataAggregator properly calculates compilation success
+ * rates, aggregates compilation error frequency and determines intervals between 
+ * compilation.
+ */
 
 class ReportDataAggregatorTest {
 

@@ -20,6 +20,12 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+/**
+ * Makes a PDF report with a summary of telemetry data.
+ * Summary has session information, compilation stats,
+ * editor activity, error frequency and class & method activity timelines
+ *
+ */
 
 public class PdfReportGenerator implements ReportStrategy {
 

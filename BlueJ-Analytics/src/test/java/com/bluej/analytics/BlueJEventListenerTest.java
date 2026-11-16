@@ -15,6 +15,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+ /**
+ * Tests the BlueJ Analytics extension to ensure it correctly handles
+ * execution, class and project events and records the corresponding
+ * telemetry data.
+ */
 
 public class BlueJEventListenerTest {
 

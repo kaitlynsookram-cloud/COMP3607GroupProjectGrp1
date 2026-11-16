@@ -33,6 +33,12 @@ import java.util.List;
 import java.util.Map;
 
 import javax.swing.Timer;
+/**
+ * BlueJAnalyticsExtension
+ * Entry point for BJ Analytics Extension
+ * Listens for BlueJ events then collects,tracks and stores telemetry data
+ * Makes JSON and PDF reports from the collected telemetry data
+ */
 
 public class BlueJAnalyticsExtension extends Extension
         implements ExtensionEventListener {
@@ -84,6 +90,10 @@ public class BlueJAnalyticsExtension extends Extension
     public boolean isCompatible() {
         return true;
     }
+    /**
+    * Registers event listener and start timer to check open editord periodically
+    * 
+    */
 
     // Start tracking when BlueJ opens.
     @Override
@@ -102,6 +112,9 @@ public class BlueJAnalyticsExtension extends Extension
                 "BlueJ Analytics extension started!"
         );
     }
+    /**
+     *Tracks compilation, execution, class and project events 
+     */
 
     // Check which event happened.
     @Override
@@ -255,6 +268,9 @@ public class BlueJAnalyticsExtension extends Extension
                 break;
         }
     }
+    /**
+     * Scans java source file for changes to a classes methods definitions
+     */
 
     // Look for changes in the methods.
     private void scanMethodDefinitions(BClass c) {
@@ -290,6 +306,11 @@ public class BlueJAnalyticsExtension extends Extension
             );
         }
     }
+    /**
+     * Detects editing activity and estimates idle time by comparing previous 
+     * snapshot and current source code
+     */
+
 
     // Compare the code with the last saved version.
     private void recordSourceActivity(BClass c) {
@@ -398,6 +419,10 @@ public class BlueJAnalyticsExtension extends Extension
             );
         }
     }
+    /**
+     * Checks known classes for open editors &
+     * notes any changes to their source files.
+     */
 
     // Check if anything changed in the editor.
     private synchronized void checkOpenEditors() {
@@ -409,6 +434,10 @@ public class BlueJAnalyticsExtension extends Extension
             recordSourceActivity(c);
         }
     }
+    /**
+    * Attaches an editor activity tracker to an open editor
+    * if one has not already been attached.
+    */
 
     // Listen for changes while typing.
     private void attachEditorTracker(BClass c) {
@@ -454,6 +483,11 @@ public class BlueJAnalyticsExtension extends Extension
             );
         }
     }
+     /**
+    * Removes the editor activity tracker associated with a class
+    * and unregisters its document listener.
+    */
+
 
     private void removeEditorTracker(String className) {
 
@@ -571,6 +605,12 @@ public class BlueJAnalyticsExtension extends Extension
             );
         }
     }
+    /**
+    * Shuts down the extension by stopping the editor check timer,
+    * removing editor listeners, recording the session end time
+    * and saving the final reports.
+    */
+
 
     @Override
     public void terminate() {

@@ -1,4 +1,11 @@
 package com.bluej.analytics.model;
+/**
+ * ExecutionTelemetryEvent
+ * a program execution event,noting the class, method
+ * object, outcome and parameters.This event also stores the runtime exception
+ * details when necessary  
+ */
+
 
 public class ExecutionTelemetryEvent implements TelemetryEvent {
 
@@ -12,7 +19,10 @@ public class ExecutionTelemetryEvent implements TelemetryEvent {
     private final boolean runtimeException;
     private final String exceptionMessage;
 
-    // Original constructor, kept for compatibility
+ /**
+ *Makes an execution event with no rutime exception details
+ *Original constructor kept for compatibility with existing code
+ */
     public ExecutionTelemetryEvent(
             long timestamp,
             String className,
@@ -25,7 +35,7 @@ public class ExecutionTelemetryEvent implements TelemetryEvent {
                 outcome, parameters, false, null);
     }
 
-    // Constructor that also stores runtime exception details
+    /**Makes an execution event with runtime exception details */
     public ExecutionTelemetryEvent(
             long timestamp,
             String className,

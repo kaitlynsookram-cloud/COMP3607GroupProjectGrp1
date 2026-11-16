@@ -6,10 +6,18 @@ import java.util.Map;
 
 import com.bluej.analytics.analysis.TelemetryAnalyzer;
 import com.bluej.analytics.model.TelemetryEvent;
+/**
+ *Combines results from telemetry analysis to use in report generation. 
+ *
+ */
 
 public class ReportDataAggregator {
 
     private final TelemetryAnalyzer analyzer;
+     /**
+     * Makes a report data aggregator using the telemetry events
+     * 
+     */
 
     public ReportDataAggregator(List<TelemetryEvent> events) {
         this.analyzer = new TelemetryAnalyzer(events);

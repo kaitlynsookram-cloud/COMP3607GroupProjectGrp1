@@ -5,6 +5,11 @@ import com.bluej.analytics.model.*;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
+/**
+ * Test that TelemetryAnalyzer properly calculates
+ * total editor idle time and changes in compilation errors
+ */
+
 
 class TelemetryAnalyzerTest {
 

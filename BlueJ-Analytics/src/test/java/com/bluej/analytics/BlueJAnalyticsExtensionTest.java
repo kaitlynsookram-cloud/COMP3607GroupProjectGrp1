@@ -15,6 +15,11 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
+/**
+ * Tests the BlueJ Analytics extension handles compilation events correctly,
+ * records telemetry data , manages editor tracking and verfies that session reports
+ * are exported upon extention termination.
+ */
 
 public class BlueJAnalyticsExtensionTest {
 

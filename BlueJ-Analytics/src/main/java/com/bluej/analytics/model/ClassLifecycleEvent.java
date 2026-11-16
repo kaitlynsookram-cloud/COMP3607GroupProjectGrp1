@@ -1,5 +1,11 @@
 
 package com.bluej.analytics.model;
+/**
+ * ClassLifecycleEvent
+ * This class is a event that notes class changes during developement 
+ * such as creation , renaming ans compilation status.
+ * 
+ */
 
 public class ClassLifecycleEvent implements TelemetryEvent {
 

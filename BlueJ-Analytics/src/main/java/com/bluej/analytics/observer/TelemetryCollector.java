@@ -4,6 +4,10 @@ import com.bluej.analytics.model.*;
 
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
+/**
+ * TelemetryCollector is a singleton that collects telemetry events and notifies observers of new events.
+ * It implements both the TelemetryObserver and TelemetrySubject interfaces.
+ */
 
 public enum TelemetryCollector implements TelemetryObserver, TelemetrySubject {
 

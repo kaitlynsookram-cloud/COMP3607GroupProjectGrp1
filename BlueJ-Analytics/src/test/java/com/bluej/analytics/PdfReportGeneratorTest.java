@@ -21,6 +21,10 @@ import java.nio.file.Path;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+/**
+ * Tests that PdfReportGenerator properly
+ * generates PDF reports using session metadata and telemetry data
+ */
 
 public class PdfReportGeneratorTest {
 

@@ -11,6 +11,11 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+/**
+ * Tests EditorActivityTracker to verify it correctly records
+ * editing activity;character changes, idle time & timestamps as
+ * telemetry events
+ */
 
 public class EditorActivityTrackerTest {
 

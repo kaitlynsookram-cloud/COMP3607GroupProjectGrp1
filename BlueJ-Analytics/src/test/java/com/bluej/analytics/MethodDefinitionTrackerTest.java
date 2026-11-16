@@ -11,6 +11,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.*;
+/**
+ * Tests the MethodDefinitionTracker to ensure it correctly detects
+ * added, modified and removed methods in Java source files.
+ * Also verifies that method snapshots are maintained separately
+ * for different classes and cleared when a class is removed.
+ */
 
 public class MethodDefinitionTrackerTest {
 

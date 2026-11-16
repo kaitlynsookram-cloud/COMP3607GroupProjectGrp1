@@ -11,13 +11,27 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
+/**
+ * TelemetryAnalyzer
+ * Analyzes collected telemetry events to calculate editing time ,idle time
+ * compilation statistics & errors.
+ */
+
 public class TelemetryAnalyzer {
 
     private final List<TelemetryEvent> events;
+    /**
+    * using a copy of provided telemetry events, creates analyzer
+    */
 
     public TelemetryAnalyzer(List<TelemetryEvent> events) {
         this.events = new ArrayList<>(events);
     }
+      /**
+    * Estimates active editing time using recorded edit timestamps
+    * One second per edit and gaps of up to five seconds
+    * @return active editing time estimate in milliseconds
+    */
 
     //to estime active editing time
     public long totalActiveTimeMs() {

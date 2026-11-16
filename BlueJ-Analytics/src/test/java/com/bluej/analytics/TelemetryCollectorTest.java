@@ -7,7 +7,12 @@ import org.junit.jupiter.api.*;
 import java.util.List;
 
 // FIX: Add this static import so assertEquals can be used directly
-import static org.junit.jupiter.api.Assertions.*; 
+import static org.junit.jupiter.api.Assertions.*;
+/**
+ * Tests TelemetryCollector to verify it maintains a single
+ * instance, stores telemetry events and notifies registered observers
+ * when new events are recorded.
+ */ 
 
 class TelemetryCollectorTest {
 

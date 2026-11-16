@@ -9,6 +9,11 @@ import com.bluej.analytics.model.TelemetryEvent;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+/**
+ * Test the telemetry event model classes to verify 
+ * they correctly store event details and return the expected values
+ * EventModelsTest
+ */
 
 public class EventModelsTest {
 

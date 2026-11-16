@@ -4,6 +4,11 @@ import bluej.extensions2.editor.DocumentListener;
 
 import com.bluej.analytics.factory.EventFactory;
 import com.bluej.analytics.observer.TelemetryCollector;
+/**
+ * Tracks the editor activity, recording changes made to a class
+ * Calculates idle time between activities
+ * EditorActivityTracker
+ */
 
 public class EditorActivityTracker implements DocumentListener {
 

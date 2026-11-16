@@ -16,6 +16,11 @@ import java.nio.file.Path;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+/**
+ * Test that JsonExporter correctly exports
+ * telemetry events and session metadata into JSON files 
+ */
+
 
 public class JsonExporterTest {
 

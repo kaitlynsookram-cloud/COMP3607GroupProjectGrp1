@@ -16,6 +16,12 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+/**
+ * Tests the functionality of soucre activity tracking of the
+ * BlueJ Analytics Extensioni,verifies that it correctly detects
+ * changes to Java source files and records editing activity.
+ * Also verifies that idle time is detected between saved changes.
+ */
 
 public class SourceActivityTrackingTest {
 
