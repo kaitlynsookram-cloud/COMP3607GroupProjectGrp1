@@ -1,6 +1,5 @@
 package com.bluej.analytics.model;
 /**
- * EditorEvent
  * This class is a editor activity event  which notes the class being edited,
  * idle time and number od keystrokes
  */

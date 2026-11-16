@@ -1,19 +1,20 @@
 package com.bluej.analytics;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import com.bluej.analytics.model.EditorEvent;
 import com.bluej.analytics.model.TelemetryEvent;
 import com.bluej.analytics.observer.TelemetryCollector;
 import com.bluej.analytics.tracking.EditorActivityTracker;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 /**
  * Tests EditorActivityTracker to verify it correctly records
- * editing activity;character changes, idle time & timestamps as
+ * editing activity;character changes, idle time and timestamps as
  * telemetry events
  */
 

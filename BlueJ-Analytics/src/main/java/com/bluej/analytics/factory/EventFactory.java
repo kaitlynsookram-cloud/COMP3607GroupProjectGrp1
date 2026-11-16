@@ -1,19 +1,21 @@
 
 package com.bluej.analytics.factory;
 
-import com.bluej.analytics.model.*;
-
 import java.util.List;
+
+import com.bluej.analytics.model.CompileEvent;
+import com.bluej.analytics.model.EditorEvent;
+import com.bluej.analytics.model.ErrorRecord;
+import com.bluej.analytics.model.ExecutionTelemetryEvent;
 /**
-* 
-* EventFactory class' role is to create telemetry events
-* then assign a timestamp when events are created
+* Create telemetry events and then assigns
+* a timestamp when events are created
 */
 
 public class EventFactory {
         /**
-        * Makes a compilation event with compilation results & errors found
-        * 
+        * Makes a compilation event with compilation results and 
+        * errors found
         * @return a new CompileEvent
         */
 
@@ -53,8 +55,8 @@ public class EventFactory {
         );
     }
      /**
-     * Makes excution event containing method excution details & runtime erros found
-     * 
+     * Makes excution event containing method excution
+     *  details and runtime errors found
      * @return a new ExecutionTelementryEvent
      */
 

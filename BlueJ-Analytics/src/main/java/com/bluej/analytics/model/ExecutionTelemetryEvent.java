@@ -1,6 +1,5 @@
 package com.bluej.analytics.model;
 /**
- * ExecutionTelemetryEvent
  * a program execution event,noting the class, method
  * object, outcome and parameters.This event also stores the runtime exception
  * details when necessary  

@@ -1,13 +1,14 @@
 package com.bluej.analytics;
 
-import com.bluej.analytics.factory.EventFactory;
-import com.bluej.analytics.observer.TelemetryCollector;
-import org.junit.jupiter.api.*;
-
 import java.util.List;
 
-// FIX: Add this static import so assertEquals can be used directly
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.bluej.analytics.factory.EventFactory;
+import com.bluej.analytics.observer.TelemetryCollector;
 /**
  * Tests TelemetryCollector to verify it maintains a single
  * instance, stores telemetry events and notifies registered observers

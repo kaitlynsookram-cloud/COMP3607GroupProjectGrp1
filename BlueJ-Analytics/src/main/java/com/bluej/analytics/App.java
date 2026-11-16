@@ -17,7 +17,7 @@ import com.bluej.analytics.report.PdfReportGenerator;
 public class App {
      /**
      * Makes sample compilation events,exports telemetry data 
-     * & displays the compilation success rate
+     * and displays the compilation success rate
      * 
      */
     public static void main(String[] args) throws Exception {

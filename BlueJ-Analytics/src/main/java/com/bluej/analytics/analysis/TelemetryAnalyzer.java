@@ -1,20 +1,19 @@
 package com.bluej.analytics.analysis;
 
-import com.bluej.analytics.model.CompileEvent;
-import com.bluej.analytics.model.EditorEvent;
-import com.bluej.analytics.model.ErrorRecord;
-import com.bluej.analytics.model.TelemetryEvent;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
+import com.bluej.analytics.model.CompileEvent;
+import com.bluej.analytics.model.EditorEvent;
+import com.bluej.analytics.model.ErrorRecord;
+import com.bluej.analytics.model.TelemetryEvent;
+
 /**
- * TelemetryAnalyzer
  * Analyzes collected telemetry events to calculate editing time ,idle time
- * compilation statistics & errors.
+ * compilation statistics and errors.
  */
 
 public class TelemetryAnalyzer {

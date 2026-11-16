@@ -1,18 +1,21 @@
 
 package com.bluej.analytics;
 
-import com.bluej.analytics.model.ProjectEvent;
-import com.bluej.analytics.model.ClassLifecycleEvent;
-import com.bluej.analytics.model.ExecutionTelemetryEvent;
-import com.bluej.analytics.model.TelemetryEvent;
-
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.bluej.analytics.model.ClassLifecycleEvent;
+import com.bluej.analytics.model.ExecutionTelemetryEvent;
+import com.bluej.analytics.model.ProjectEvent;
+import com.bluej.analytics.model.TelemetryEvent;
 /**
  * Test the telemetry event model classes to verify 
  * they correctly store event details and return the expected values
- * EventModelsTest
  */
 
 public class EventModelsTest {

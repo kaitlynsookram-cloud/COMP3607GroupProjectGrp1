@@ -1,6 +1,6 @@
 package com.bluej.analytics.observer;
 /** 
- * TelemetrySubject interface for managing observers and notifying them of telemetry events.    
+ * Interface for managing observers and notifying them of telemetry events.    
  */
 
 public interface TelemetrySubject {

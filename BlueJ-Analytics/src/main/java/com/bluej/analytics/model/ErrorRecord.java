@@ -1,6 +1,5 @@
 package com.bluej.analytics.model;
 /**
- * ErrorRecord
  * This class represents a compilation error , holdig its error code,
  * error message and line number where it happened
  */

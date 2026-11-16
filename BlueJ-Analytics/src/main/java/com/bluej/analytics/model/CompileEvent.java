@@ -1,7 +1,6 @@
 package com.bluej.analytics.model;
 import java.util.List;
 /**
- * Compile Event
  * This class is a compilation event that notes the compilation result;
  * errors,success status and compilation duration .
  */

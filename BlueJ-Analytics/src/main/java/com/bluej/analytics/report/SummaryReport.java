@@ -5,8 +5,8 @@ import java.io.IOException;
 import com.bluej.analytics.observer.TelemetryCollector;
 /**
  * Makes a summary report with a summary of telemetry data.
- * Summary has session information, compilation stats,
- * editor activity, error frequency and class & method activity timelines
+ * The summary has session information, compilation stats,
+ * editor activity, error frequency and class and method activity timelines
  *
  */
 

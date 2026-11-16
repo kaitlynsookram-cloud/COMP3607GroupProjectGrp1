@@ -1,16 +1,15 @@
 
 package com.bluej.analytics;
 
-import bluej.extensions2.BlueJ;
-import bluej.extensions2.Extension;
-import bluej.extensions2.BClass;
-import bluej.extensions2.editor.JavaEditor;
-import bluej.extensions2.event.ClassEvent;
-import bluej.extensions2.event.CompileEvent;
-import bluej.extensions2.event.ExtensionEvent;
-import bluej.extensions2.event.ExtensionEventListener;
-import bluej.extensions2.event.InvocationFinishedEvent;
-import bluej.extensions2.event.PackageEvent;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.swing.Timer;
 
 import com.bluej.analytics.exporter.PersistenceService;
 import com.bluej.analytics.factory.EventFactory;
@@ -23,19 +22,18 @@ import com.bluej.analytics.report.PdfReportGenerator;
 import com.bluej.analytics.tracking.EditorActivityTracker;
 import com.bluej.analytics.tracking.MethodDefinitionTracker;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.swing.Timer;
+import bluej.extensions2.BClass;
+import bluej.extensions2.BlueJ;
+import bluej.extensions2.Extension;
+import bluej.extensions2.editor.JavaEditor;
+import bluej.extensions2.event.ClassEvent;
+import bluej.extensions2.event.CompileEvent;
+import bluej.extensions2.event.ExtensionEvent;
+import bluej.extensions2.event.ExtensionEventListener;
+import bluej.extensions2.event.InvocationFinishedEvent;
+import bluej.extensions2.event.PackageEvent;
 /**
- * BlueJAnalyticsExtension
- * Entry point for BJ Analytics Extension
+ * Entry point for BlueJ Analytics Extension
  * Listens for BlueJ events then collects,tracks and stores telemetry data
  * Makes JSON and PDF reports from the collected telemetry data
  */
@@ -91,8 +89,8 @@ public class BlueJAnalyticsExtension extends Extension
         return true;
     }
     /**
-    * Registers event listener and start timer to check open editord periodically
-    * 
+    * Registers event listener and start timer to 
+    * check open editors periodically
     */
 
     // Start tracking when BlueJ opens.

@@ -1,11 +1,11 @@
 package com.bluej.analytics.exporter;
 
-import com.bluej.analytics.observer.TelemetryCollector;
 import java.io.IOException;
+
+import com.bluej.analytics.observer.TelemetryCollector;
 /**
  * Abstract base for exporting telemetry data
  * Standard export method using the Template Method
- * 
  */
 
 public abstract class DataExporter {
