@@ -1,10 +1,21 @@
 package com.bluej.analytics;
 
-import com.bluej.analytics.analysis.TelemetryAnalyzer;
-import com.bluej.analytics.model.*;
-import org.junit.jupiter.api.Test;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+
+import com.bluej.analytics.analysis.TelemetryAnalyzer;
+import com.bluej.analytics.model.CompileEvent;
+import com.bluej.analytics.model.EditorEvent;
+import com.bluej.analytics.model.TelemetryEvent;
+/**
+ * Test that TelemetryAnalyzer properly calculates
+ * total editor idle time and changes in compilation errors
+ * 
+ * Made by: Kaydance Hamilton
+ */
+
 
 class TelemetryAnalyzerTest {
 

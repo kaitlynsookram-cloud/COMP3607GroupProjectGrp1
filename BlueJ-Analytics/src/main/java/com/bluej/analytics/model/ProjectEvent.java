@@ -1,4 +1,10 @@
 package com.bluej.analytics.model;
+/**
+ * An event that notes actions done on a project,
+ * project name and action done.
+ * 
+ * Made by:Kaitlyn Sookram
+ */
 
 public class ProjectEvent implements TelemetryEvent {
 

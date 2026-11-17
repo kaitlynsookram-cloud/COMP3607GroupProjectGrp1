@@ -1,11 +1,27 @@
 
 package com.bluej.analytics.factory;
 
-import com.bluej.analytics.model.*;
-
 import java.util.List;
 
+import com.bluej.analytics.model.CompileEvent;
+import com.bluej.analytics.model.EditorEvent;
+import com.bluej.analytics.model.ErrorRecord;
+import com.bluej.analytics.model.ExecutionTelemetryEvent;
+/**
+* Create telemetry events and then assigns
+* a timestamp when events are created
+*
+*Made by: Anthony Lakicharan
+*/
+
+
 public class EventFactory {
+        /**
+        * Makes a compilation event with compilation results and 
+        * errors found
+        * @return a new CompileEvent
+        */
+
 
     //compilation event creation
     public static CompileEvent createCompileEvent(
@@ -22,6 +38,11 @@ public class EventFactory {
                 durationMs
         );
     }
+    /**
+     * Makes editor eventused to record user editing activity
+     * 
+     * @return a new EditorEvent
+     */
 
     //editor activity events
     public static EditorEvent createEditorEvent(
@@ -36,6 +57,12 @@ public class EventFactory {
                 keystrokes
         );
     }
+     /**
+     * Makes excution event containing method excution
+     *  details and runtime errors found
+     * @return a new ExecutionTelementryEvent
+     */
+
 
     public static ExecutionTelemetryEvent createExecutionEvent(
             String className,

@@ -1,4 +1,10 @@
 package com.bluej.analytics.model;
+/**
+ * This is an event that notes changes to the method definitions,
+ * the method signiture and action performed
+ * 
+ * Made by: Anthony Lakicharan
+ */
 
 public class MethodDefinitionEvent implements TelemetryEvent {
 

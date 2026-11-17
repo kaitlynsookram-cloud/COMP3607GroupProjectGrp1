@@ -10,6 +10,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+/**
+ * Tracks method definition changes in java classes
+ * Identifies when methods are changed, added or removed and saves this as telemetry events.
+ */
 
 public class MethodDefinitionTracker {
 
@@ -21,6 +25,14 @@ public class MethodDefinitionTracker {
 
     private final Map<String, Map<String, String>> previous =
             new HashMap<>();
+    /**
+     * Scans the given file for method definitions and compares them to the previous scan.
+     * If any methods have been added, modified or removed, a telemetry event is recorded.
+     *
+     * @param className The name of the class being scanned
+     * @param file The path to the file being scanned
+     * @throws IOException If an I/O error occurs reading from the file
+     */
 
     public void scan(String className, Path file)
             throws IOException {
@@ -100,6 +112,10 @@ public class MethodDefinitionTracker {
 
         previous.put(className, current);
     }
+    /**
+     * Removes the given class from the tracker, so that it will no longer be tracked for method definition changes.
+     * @param className
+     */
 
     public void remove(String className) {
         previous.remove(className);

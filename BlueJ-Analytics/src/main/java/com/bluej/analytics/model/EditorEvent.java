@@ -1,4 +1,10 @@
 package com.bluej.analytics.model;
+/**
+ * This class is a editor activity event  which notes the class being edited,
+ * idle time and number od keystrokes
+ * 
+ * Made by: Anthony Lakicharan
+ */
 
 public class EditorEvent implements TelemetryEvent {
     private final long timestamp;

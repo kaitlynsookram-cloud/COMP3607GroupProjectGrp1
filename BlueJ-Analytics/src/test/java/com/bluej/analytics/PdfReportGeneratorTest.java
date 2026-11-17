@@ -1,6 +1,18 @@
 
 package com.bluej.analytics;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
+import org.junit.jupiter.api.AfterEach;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+
 import com.bluej.analytics.model.ClassLifecycleEvent;
 import com.bluej.analytics.model.CompileEvent;
 import com.bluej.analytics.model.ErrorRecord;
@@ -8,19 +20,12 @@ import com.bluej.analytics.model.ExecutionTelemetryEvent;
 import com.bluej.analytics.model.SessionMetadata;
 import com.bluej.analytics.observer.TelemetryCollector;
 import com.bluej.analytics.report.PdfReportGenerator;
-
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.text.PDFTextStripper;
-
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+/**
+ * Tests that PdfReportGenerator properly
+ * generates PDF reports using session metadata and telemetry data
+ * 
+ * Made by: Kaitlyn Sookram
+ */
 
 public class PdfReportGeneratorTest {
 

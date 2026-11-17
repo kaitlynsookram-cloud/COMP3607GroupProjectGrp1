@@ -1,9 +1,19 @@
 package com.bluej.analytics.exporter;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+
 import com.bluej.analytics.observer.TelemetryCollector;
 import com.google.gson.GsonBuilder;
-import java.io.IOException;
-import java.nio.file.*;
+/**
+ * Exports telemetry data into formatted JSON file
+ * Uses Gson to serialize collector metadata 
+ * 
+ * Made by: Anthony Lakicharan
+ */
 
 public class JsonExporter extends DataExporter {
 
@@ -21,7 +31,9 @@ public class JsonExporter extends DataExporter {
         Path p = Paths.get(filename);
         Files.writeString(p, data, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
     }
-
+     /**
+     * Telemetry metadata and events grouped for JSON serialization
+     */
     
     private static class ExportPayload {
         final Object metadata;

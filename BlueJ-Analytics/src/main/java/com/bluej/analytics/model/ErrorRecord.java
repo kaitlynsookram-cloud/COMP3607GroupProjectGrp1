@@ -1,4 +1,10 @@
 package com.bluej.analytics.model;
+/**
+ * This class represents a compilation error , holdig its error code,
+ * error message and line number where it happened
+ * 
+ * Made by: Kaydance Hamilton
+ */
 
 public class ErrorRecord {
     private final String errorCode;

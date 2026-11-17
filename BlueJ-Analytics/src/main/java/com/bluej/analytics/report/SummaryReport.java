@@ -3,6 +3,13 @@ package com.bluej.analytics.report;
 import java.io.IOException;
 
 import com.bluej.analytics.observer.TelemetryCollector;
+/**
+ * Makes a summary report with a summary of telemetry data.
+ * The summary has session information, compilation stats,
+ * editor activity, error frequency and class and method activity timelines
+ * 
+ *Made by: Kaydance Hamilton
+ */
 
 public class SummaryReport implements ReportStrategy {
     @Override

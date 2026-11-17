@@ -1,21 +1,29 @@
 package com.bluej.analytics;
 
-import bluej.extensions2.BClass;
-
-import com.bluej.analytics.observer.TelemetryCollector;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-
-import java.io.File;
 import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import com.bluej.analytics.observer.TelemetryCollector;
+
+import bluej.extensions2.BClass;
+/**
+ * Tests the functionality of soucre activity tracking of the
+ * BlueJ Analytics Extensioni,verifies that it correctly detects
+ * changes to Java source files and records editing activity.
+ * Also verifies that idle time is detected between saved changes.
+ * 
+ * Made by: Kaitlyn Sookram
+ */
 
 public class SourceActivityTrackingTest {
 

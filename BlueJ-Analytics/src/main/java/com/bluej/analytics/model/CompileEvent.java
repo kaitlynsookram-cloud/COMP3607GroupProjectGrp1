@@ -1,5 +1,11 @@
 package com.bluej.analytics.model;
 import java.util.List;
+/**
+ * This class is a compilation event that notes the compilation result;
+ * errors,success status and compilation duration .
+ * 
+ * Made by: Anthony Lakicharan
+ */
 
 public class CompileEvent implements TelemetryEvent {
     private final long timestamp;

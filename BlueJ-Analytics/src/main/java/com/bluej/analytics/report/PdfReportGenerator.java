@@ -1,19 +1,6 @@
 
 package com.bluej.analytics.report;
 
-import com.bluej.analytics.model.ClassLifecycleEvent;
-import com.bluej.analytics.model.CompileEvent;
-import com.bluej.analytics.model.ExecutionTelemetryEvent;
-import com.bluej.analytics.model.MethodDefinitionEvent;
-import com.bluej.analytics.model.SessionMetadata;
-import com.bluej.analytics.model.TelemetryEvent;
-import com.bluej.analytics.observer.TelemetryCollector;
-
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
-
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,6 +8,26 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+
+import com.bluej.analytics.model.ClassLifecycleEvent;
+import com.bluej.analytics.model.CompileEvent;
+import com.bluej.analytics.model.ExecutionTelemetryEvent;
+import com.bluej.analytics.model.MethodDefinitionEvent;
+import com.bluej.analytics.model.SessionMetadata;
+import com.bluej.analytics.model.TelemetryEvent;
+import com.bluej.analytics.observer.TelemetryCollector;
+/**
+ * Makes a PDF report with a summary of telemetry data.
+ * The summary has session information, compilation stats,
+ * editor activity, error frequency and class and method activity timelines
+ *
+ * Made by: Anthony Lakicharan
+ */
 
 public class PdfReportGenerator implements ReportStrategy {
 

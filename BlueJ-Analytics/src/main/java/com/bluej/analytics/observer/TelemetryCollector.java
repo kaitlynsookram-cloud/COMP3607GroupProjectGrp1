@@ -1,9 +1,17 @@
 package com.bluej.analytics.observer;
 
-import com.bluej.analytics.model.*;
-
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+
+import com.bluej.analytics.model.SessionMetadata;
+import com.bluej.analytics.model.TelemetryEvent;
+/**
+ * A singleton that collects telemetry events and notifies observers of new events.
+ * It implements both the TelemetryObserver and TelemetrySubject interfaces.
+ * 
+ * Made by: Kaydance Hamilton
+ */
 
 public enum TelemetryCollector implements TelemetryObserver, TelemetrySubject {
 

@@ -1,20 +1,30 @@
 package com.bluej.analytics;
 
-import bluej.extensions2.BClass;
-import bluej.extensions2.event.ClassEvent;
-import bluej.extensions2.event.PackageEvent;
-import bluej.extensions2.event.InvocationFinishedEvent;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import com.bluej.analytics.model.ClassLifecycleEvent;
 import com.bluej.analytics.model.ExecutionTelemetryEvent;
 import com.bluej.analytics.model.ProjectEvent;
 import com.bluej.analytics.observer.TelemetryCollector;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import bluej.extensions2.BClass;
+import bluej.extensions2.event.ClassEvent;
+import bluej.extensions2.event.InvocationFinishedEvent;
+import bluej.extensions2.event.PackageEvent;
+ /**
+ * Tests the BlueJ Analytics extension to ensure it correctly handles
+ * execution, class and project events and records the corresponding
+ * telemetry data.
+ * 
+ * Made by: Kaitlyn Sookram
+ */
 
 public class BlueJEventListenerTest {
 

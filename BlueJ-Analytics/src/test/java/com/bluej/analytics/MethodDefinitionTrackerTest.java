@@ -1,16 +1,24 @@
 package com.bluej.analytics;
 
-import com.bluej.analytics.tracking.MethodDefinitionTracker;
-import com.bluej.analytics.observer.TelemetryCollector;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-
-import static org.junit.jupiter.api.Assertions.*;
+import com.bluej.analytics.observer.TelemetryCollector;
+import com.bluej.analytics.tracking.MethodDefinitionTracker;
+/**
+ * Tests the MethodDefinitionTracker to ensure it correctly detects
+ * added, modified and removed methods in Java source files.
+ * Also verifies that method snapshots are maintained separately
+ * for different classes and cleared when a class is removed.
+ * 
+ * Made by: Kaitlyn Sookram
+ */
 
 public class MethodDefinitionTrackerTest {
 

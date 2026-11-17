@@ -7,8 +7,20 @@ import com.bluej.analytics.exporter.JsonExporter;
 import com.bluej.analytics.model.ErrorRecord;
 import com.bluej.analytics.observer.TelemetryCollector;
 import com.bluej.analytics.report.PdfReportGenerator;
+/**
+ * Creates sample events, exports data and generates a PDF report 
+ * to demonstrate the telemetry analytics system
+ * 
+ * Made by: Anthony Lakicharan
+ */
+
 
 public class App {
+     /**
+     * Makes sample compilation events,exports telemetry data 
+     * and displays the compilation success rate
+     * 
+     */
     public static void main(String[] args) throws Exception {
         TelemetryCollector c = TelemetryCollector.INSTANCE;
         long t = System.currentTimeMillis();
@@ -23,7 +35,10 @@ public class App {
         TelemetryAnalyzer a = new TelemetryAnalyzer(c.getEvents());
         System.out.println("Success rate = " + a.compileSuccessRate());
     }
-
+    /**
+     * EventFactoryHelper:
+     * for creating sample compilation events
+     */
     
     static class EventFactoryHelper {
         static com.bluej.analytics.model.CompileEvent of(
