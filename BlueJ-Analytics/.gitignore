@@ -1,23 +1,52 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+.kotlin
 
-# IntelliJ files
-.idea/
+### IntelliJ IDEA ###
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
 *.iml
+*.ipr
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
 .vscode/
 
-# Maven build files
-target/
-build/
+### Mac OS ###
+.DS_Store
+
+# Local Java SDK files
+/src/main/java/com/bluej/analytics/oracleJdk-27/
 
 # Compiled Java files
 *.class
-
-# Operating system files
-.DS_Store
-Thumbs.db
 
 # Logs and temporary files
 *.log
 *.tmp
 
-# Local Java SDK files
-/src/main/java/com/bluej/analytics/oracleJdk-27/
+# Maven build output
+target/
